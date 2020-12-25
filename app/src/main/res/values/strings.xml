@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">IOT辅助作业</string>
+
+    <string name="action_refresh">刷新</string>
+    <string name="action_history">历史</string>
+    <string name="action_settings">设置</string>
+    <string name="action_help">帮助</string>
+
+    <array name="array">
+        <item>冷藏集装箱</item>
+        <item>罐箱</item>
+        <item>货车监控</item>
+        <item>冷藏手持</item>
+    </array>
+</resources>

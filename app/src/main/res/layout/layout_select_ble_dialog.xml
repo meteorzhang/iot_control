@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="app.iot.viewmodel.SelectBLEViewModel" />
+
+        <variable
+            name="recyclerViewViewModel"
+            type="app.iot.viewmodel.RecyclerViewViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_dialog"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:padding="8dp"
+                app:anim="@{viewModel.isLoading}"
+                android:src="@drawable/ic_loading" />
+
+            <TextView
+                android:id="@+id/select_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="设备列表"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:padding="8dp"
+                android:foreground="@drawable/ripple_circle"
+                android:onClick="@{viewModel::reload}"
+                android:src="@drawable/ic_refresh" />
+        </FrameLayout>
+
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:bindRefreshListener="@{viewModel}">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include
+                        layout="@layout/layout_loading"
+                        bind:loadingViewModel="@{viewModel.loadingViewModel}" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:adapter="@{recyclerViewViewModel.adapter}"
+                        app:itemBinding="@{recyclerViewViewModel.itemBinding}"
+                        app:items="@{recyclerViewViewModel.items}"
+                        app:layoutManager="@{recyclerViewViewModel.layoutManager}"
+                        app:viewHolder="@{recyclerViewViewModel.viewHolder}" />
+
+                    <include
+                        layout="@layout/layout_no_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:clipChildren="false"
+                        android:visibility="@{viewModel.isEmpty ? View.VISIBLE : View.GONE}"
+                        app:empty="@{viewModel.emptyViewModel}" />
+
+                </FrameLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+</layout>

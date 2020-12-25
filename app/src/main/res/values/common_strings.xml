@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">加载中...</string>
+    <string name="no_content">暂无内容...</string>
+
+    <string name="connect_error">网络异常,请检查网络</string>
+    <string name="connect_timeout">连接超时,请稍后再试</string>
+    <string name="bad_network">服务器异常</string>
+    <string name="parse_error">解析服务器响应数据失败</string>
+    <string name="unknown_error">未知错误</string>
+    <string name="response_return_error">服务器返回数据失败</string>
+    <string name="network_exception">糟糕,网络异常!</string>
+    <string name="file_error">文件错误</string>
+    <string name="storage_error">文件存储错误</string>
+
+    <string name="download_tips">正在下载...</string>
+    <string name="download_complete">下载完成...</string>
+    <string name="download_fail">下载失败!</string>
+    <string name="download_start">开始下载</string>
+
+    <string name="permission_denied">请授予权限</string>
+</resources>

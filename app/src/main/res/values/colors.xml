@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F5F5F5</color>
+    <color name="colorAccent">#00796B</color>
+    <color name="colorAccentLight">#CC00796B</color>
+    <color name="colorAccentHint">#8800796B</color>
+    <color name="colorAccentHintLight">#3300796B</color>
+
+    <color name="colorRed">#ff0000</color>
+
+    <color name="line">#F5F5F5</color>
+
+    <color name="request_warning">#FF5722</color>
+
+    <color name="textColorDark">#151515</color>
+    <color name="textColorPrimary">#333333</color>
+    <color name="textColorPrimaryHint">#999999</color>
+    <color name="textColorLightHint">#D3D3D3</color>
+    <color name="textColorLightBlue">#0091FF</color>
+
+    <color name="textColorGreen">#388E3C</color>
+
+    <color name="navigationBarColor">@color/black_overlay</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="tab_normal_color">@color/textColorPrimary</color>
+    <color name="tab_selected_color">@color/colorAccent</color>
+    <color name="tab_indicator_color">@color/colorAccentLight</color>
+
+</resources>

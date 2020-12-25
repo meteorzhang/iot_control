@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="app.iot.viewmodel.OperateRecordFragmentViewModel" />
+
+
+        <variable
+            name="recyclerViewViewModel"
+            type="app.iot.viewmodel.RecyclerViewViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_text"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shape_search_bg"
+            android:drawableEnd="@drawable/ic_search"
+            android:hint="过滤装备编号或设备编号"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLength="11"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="@={viewModel.searchText}"
+            android:textSize="13sp"
+            app:addTextChangedListener="@{viewModel.searchWatcher}" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:adapter="@{recyclerViewViewModel.adapter}"
+                app:itemBinding="@{recyclerViewViewModel.itemBinding}"
+                app:items="@{recyclerViewViewModel.items}"
+                app:layoutManager="@{recyclerViewViewModel.layoutManager}"
+                app:viewHolder="@{recyclerViewViewModel.viewHolder}" />
+
+            <include
+                layout="@layout/layout_no_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clipChildren="false"
+                android:visibility="@{viewModel.isEmpty ? View.VISIBLE : View.GONE}"
+                app:empty="@{viewModel.emptyViewModel}" />
+
+        </FrameLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="app.iot.viewmodel.EquipViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- 装备类型 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:foreground="@drawable/ripple_circle"
+                    android:hint="装备类型:"
+                    android:padding="8dp"
+                    android:textSize="21sp" />
+
+                <Spinner
+                    android:id="@+id/equip_type_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:foreground="@drawable/ripple_foreground"
+                    android:hint="请选择装备类型"
+                    android:maxLength="18"
+                    android:paddingLeft="4dp"
+                    android:singleLine="true"
+                    android:textSize="21sp"
+                    app:entries="@{viewModel.equipTypes}"
+                    app:onItemSelected="@{viewModel}" />
+
+            </LinearLayout>
+            <!-- 装备型号 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:foreground="@drawable/ripple_circle"
+                    android:hint="装备型号:"
+                    android:textSize="21sp"
+                    android:padding="8dp" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/equip_model_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:foreground="@drawable/ripple_foreground"
+                    android:hint="请选择装备型号"
+                    android:maxLength="18"
+                    android:paddingLeft="4dp"
+                    android:textSize="21sp"
+                    app:entries="@{viewModel.equipModels}"
+                    app:onItemSelected="@{viewModel}" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/textColorPrimaryHint"/>
+
+            <!-- 设备类型 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:foreground="@drawable/ripple_circle"
+                    android:hint="设备类型:"
+                    android:textSize="21sp"
+                    android:padding="8dp" />
+
+                <Spinner
+                    android:id="@+id/device_type_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:foreground="@drawable/ripple_foreground"
+                    android:hint="请选择设备类型"
+                    android:maxLength="18"
+                    android:paddingLeft="4dp"
+                    android:singleLine="true"
+                    android:textSize="21sp"
+                    app:entries="@{viewModel.deviceTypes}"
+                    app:onItemSelected="@{viewModel}" />
+
+            </LinearLayout>
+            <!-- 设备型号 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:foreground="@drawable/ripple_circle"
+                    android:hint="设备型号:"
+                    android:textSize="21sp"
+                    android:padding="8dp" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/device_model_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:foreground="@drawable/ripple_foreground"
+                    android:hint="请选择设备型号"
+                    android:maxLength="18"
+                    android:paddingLeft="4dp"
+                    android:textSize="21sp"
+                    app:entries="@{viewModel.deviceModels}"
+                    app:onItemSelected="@{viewModel}" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_big_btn"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:onClick="@{viewModel::commit}"
+                android:translationZ="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

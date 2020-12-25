@@ -1,0 +1,10 @@
+//编译并打所有的release包（通常上正式渠道只需要release包，所以我们只打release包就可以了）
+gradlew assembleRelease
+//编译并打所有的debug包
+gradlew assembleDebug
+//查看gradlew版本
+gradlew -v
+//清空
+gradlew clean
+// 编译
+gradlew build

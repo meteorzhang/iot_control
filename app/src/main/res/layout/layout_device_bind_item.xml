@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemViewModel"
+            type="app.iot.viewmodel.DeviceBindItemViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="4dp"
+        android:foreground="@drawable/ripple_foreground"
+        android:gravity="center"
+        android:onClick="@{itemViewModel::selectDevice}"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="4dp"
+                android:singleLine="true"
+                android:text="@{itemViewModel.deviceDetail.deviceName}"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:text=": "
+                android:textColor="@color/textColorPrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="点击选择设备"
+                android:singleLine="true"
+                android:text="@{itemViewModel.deviceNo}"
+                android:textColor="@color/colorRed"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:visibility="@{itemViewModel.isLog ? View.GONE : View.VISIBLE}"
+            android:src="@drawable/ic_edit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:padding="2dp"
+            android:textSize="16sp"
+            android:text="@{itemViewModel.logDeviceNo}"
+            android:textColor="@color/textColorGreen"
+            android:visibility="@{itemViewModel.isLog ? View.VISIBLE : View.GONE}"/>
+    </RelativeLayout>
+
+
+</layout>

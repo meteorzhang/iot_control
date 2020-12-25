@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="蓝牙扫描">
+        <ListPreference
+            android:defaultValue="15000"
+            android:dialogTitle="@string/title_scan_duration"
+            android:entries="@array/entries_scan_duration"
+            android:entryValues="@array/values_scan_duration"
+            android:key="@string/key_scan_duration"
+            android:summary="%s"
+            android:title="@string/title_scan_duration" />
+
+        <ListPreference
+            android:defaultValue="2"
+            android:dialogTitle="@string/title_scan_times"
+            android:entries="@array/entries_scan_times"
+            android:entryValues="@array/values_scan_times"
+            android:key="@string/key_scan_times"
+            android:summary="%s"
+            android:title="@string/title_scan_times" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

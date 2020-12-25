@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 Phillip Hsu
+  ~
+  ~ This file is part of ClockPlus.
+  ~
+  ~ ClockPlus is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ ClockPlus is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with ClockPlus.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="key_scan_duration">key_scan_duration</string>
+    <string name="title_scan_duration">扫描时长</string>
+    <!-- Durations for duration -->
+    <string-array name="entries_scan_duration">
+        <item>5 秒</item>
+        <item>10 秒</item>
+        <item>15 秒</item>
+        <item>30 秒</item>
+        <item>45 秒</item>
+        <item>60 秒</item>
+    </string-array>
+    <string-array name="values_scan_duration">
+        <item>5000</item>
+        <item>10000</item>
+        <item>15000</item>
+        <item>30000</item>
+        <item>45000</item>
+        <item>60000</item>
+    </string-array>
+
+    <string name="key_scan_times">key_scan_times</string>
+    <string name="title_scan_times">扫描次数</string>
+    <!-- Durations for duration -->
+    <string-array name="entries_scan_times">
+        <item>1 次</item>
+        <item>2 次</item>
+        <item>3 次</item>
+        <item>4 次</item>
+        <item>5 次</item>
+        <item>10 次</item>
+    </string-array>
+    <string-array name="values_scan_times">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+
+</resources>

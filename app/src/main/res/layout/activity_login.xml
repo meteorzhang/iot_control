@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="app.iot.viewmodel.LoginViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/common_toolbar"
+            app:data="@{viewModel.titleViewModel}" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 输入登录区 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <!-- 帐号区 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_phone" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="16dp"
+                        android:background="#E9E9E9" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:digits="0123456789qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM"
+                        android:hint="请输入您的账号"
+                        android:imeOptions="actionNext|flagNoExtractUi"
+                        android:inputType="text"
+                        android:maxLength="11"
+                        android:text="@={viewModel.account}"
+                        android:textSize="16sp"
+                        app:addTextChangedListener="@{viewModel.editAccountWatcher}" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:foreground="@drawable/ripple_circle"
+                        android:onClick="@{viewModel::cleanAccount}"
+                        android:src="@drawable/ic_input_close"
+                        android:visibility="@{viewModel.account.empty ? View.GONE : View.VISIBLE}" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#E9E9E9" />
+
+                <!-- 密码区 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="@{viewModel.passwordEnable ? View.VISIBLE : View.GONE}">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_password" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="16dp"
+                        android:background="#E9E9E9" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:digits="0123456789qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM"
+                        android:hint="请输入密码"
+                        android:text="@={viewModel.password}"
+                        android:textSize="16sp"
+                        app:addTextChangedListener="@{viewModel.editPasswordWatcher}"
+                        app:bindInputType="@{viewModel.passwordVisible}" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:foreground="@drawable/ripple_circle"
+                        android:onClick="@{viewModel::swapVisible}"
+                        android:src="@{viewModel.passwordVisible ? @drawable/ic_eye_close : @drawable/ic_eye_open }" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#E9E9E9"
+                    android:visibility="@{viewModel.passwordEnable ? View.VISIBLE : View.GONE}" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@{viewModel.commitEnable ? @drawable/selector_big_btn : @drawable/ic_big_btn_disable }"
+                    android:elevation="2dp"
+                    android:onClick="@{viewModel::commit}"
+                    android:text="登 录"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:translationZ="1dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
