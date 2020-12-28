@@ -60,7 +60,7 @@
                             android:gravity="center_vertical"
                             android:text="运输装备"
                             android:textColor="@color/textColorPrimaryHint"
-                            android:textSize="9sp" />
+                            android:textSize="20sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -76,7 +76,7 @@
                             android:paddingLeft="4dp"
                             android:text="装备类型:"
                             android:textColor="@color/colorAccent"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                             android:paddingLeft="4dp"
                             android:text="@{viewModel.bindDetail.equipmentTypeName}"
 
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -102,7 +102,7 @@
                             android:paddingLeft="4dp"
                             android:text="装备型号:"
                             android:textColor="@color/colorAccent"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                             android:paddingLeft="4dp"
                             android:text="@{viewModel.bindDetail.equipmentModelCode}"
 
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -128,7 +128,7 @@
                             android:paddingLeft="4dp"
                             android:text="装备编号:"
                             android:textColor="@color/colorAccent"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -136,7 +136,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="4dp"
                             android:text="@{viewModel.bindDetail.equipmentNo}"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -166,7 +166,7 @@
                             android:gravity="center_vertical"
                             android:text="设备"
                             android:textColor="@color/textColorPrimaryHint"
-                            android:textSize="9sp" />
+                            android:textSize="20sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -184,7 +184,7 @@
                             android:text="设备类型:"
                             android:textColor="@color/colorAccent"
 
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -192,7 +192,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="4dp"
                             android:text="@{viewModel.bindDetail.deviceTypeName}"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -211,7 +211,7 @@
                             android:text="设备型号:"
                             android:textColor="@color/colorAccent"
 
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -219,7 +219,7 @@
                             android:layout_gravity="center"
                             android:paddingLeft="4dp"
                             android:text="@{viewModel.bindDetail.deviceModelCode}"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -244,7 +244,7 @@
                             android:gravity="center_vertical"
                             android:text="设备列表"
                             android:textColor="@color/textColorPrimaryHint"
-                            android:textSize="9sp" />
+                            android:textSize="20sp" />
                     </LinearLayout>
 
                     <FrameLayout
