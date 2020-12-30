@@ -26,20 +26,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{itemViewModel.name}"
-                android:textSize="14sp" />
+                android:textColor="@color/textColorGreen"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=": "
-                android:textSize="14sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:text="@{itemViewModel.value}"
                 android:textColor="@color/textColorGreen"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
