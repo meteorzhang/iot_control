@@ -15,6 +15,7 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
 
     val name = ObservableField<String>()
     val value = ObservableField<String>()
+    val isTitle = ObservableField<Boolean>()
 
     val details = ObservableField<List<ProtocolDetail>>()
 
@@ -26,6 +27,11 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
         )
 
     init {
+        if (protocol.desc == "设备状态") {
+            isTitle.set(true)
+        } else {
+            isTitle.set(false)
+        }
         name.set(protocol.desc)
         protocol.value?.let {
             when (protocol.dataType) {//Reserved Header Data DeviceType DeviceNo UTCTime DeviceStatus CRC-8 CRC-16 DoorStatus ErrorStatus

@@ -18,8 +18,7 @@ class ProtocolParserViewModel : BaseViewModel() {
             LogUtils.d("协议详情：" + it.size)
             for (protocol in it) {//设备详情列表
                 if (protocol.dataType != "Header" && protocol.dataType != "Reserved") {
-                    val itemViewModel =
-                        ProtocolItemViewModel(protocol)
+                    val itemViewModel = ProtocolItemViewModel(protocol)
                     itemViewModel.context = context
                     recyclerViewViewModel.item.add(itemViewModel)
                 }

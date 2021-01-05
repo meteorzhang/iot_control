@@ -7,6 +7,10 @@
         <variable
             name="itemViewModel"
             type="app.iot.viewmodel.ProtocolItemViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -17,6 +21,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_protocol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -33,7 +38,8 @@
                 android:padding="6dp"
                 android:text="@{itemViewModel.name}"
                 android:textColor="@color/textColorGreen"
-                android:textSize="20sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="1dp"
@@ -48,8 +54,7 @@
                 android:paddingLeft="10dp"
                 android:text="@{itemViewModel.value}"
                 android:textColor="@color/textColorGreen"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <View
                 android:layout_width="1dp"
