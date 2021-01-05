@@ -3,6 +3,7 @@ package app.iot.viewmodel
 import androidx.databinding.ObservableField
 import app.iot.BR
 import app.iot.R
+import app.iot.common.util.LogUtils
 import app.iot.model.Protocol
 import app.iot.model.ProtocolDetail
 import app.iot.model.ProtocolDeviceType
@@ -27,7 +28,7 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
         )
 
     init {
-        if (protocol.desc == "设备状态") {
+        if (protocol.desc == "设备状态" || protocol.desc == "实况数据") {
             isTitle.set(true)
         } else {
             isTitle.set(false)

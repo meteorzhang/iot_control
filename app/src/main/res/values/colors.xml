@@ -24,6 +24,8 @@
     <color name="navigationBarColor">@color/black_overlay</color>
 
     <color name="black_overlay">#66000000</color>
+    
+    <color name="black">#000000</color>
 
     <color name="tab_normal_color">@color/textColorPrimary</color>
     <color name="tab_selected_color">@color/colorAccent</color>

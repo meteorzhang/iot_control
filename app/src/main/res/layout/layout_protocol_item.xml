@@ -24,6 +24,7 @@
             android:id="@+id/ll_protocol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@{itemViewModel.isTitle() ? @color/textColorGreen : @color/colorPrimary}"
             android:orientation="horizontal">
 
             <View
@@ -37,14 +38,14 @@
                 android:layout_weight="1"
                 android:padding="6dp"
                 android:text="@{itemViewModel.name}"
-                android:textColor="@color/textColorGreen"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textColor="@{itemViewModel.isTitle() ? @color/colorPrimary : @color/black}"
+                android:textSize="@{itemViewModel.isTitle() ? 54 : 44}" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#000000" />
+                android:background="#000000"
+                android:visibility="@{itemViewModel.isTitle() ? view.GONE : view.VISIBLE}" />
 
             <TextView
                 android:layout_width="0dp"
@@ -53,8 +54,8 @@
                 android:padding="6dp"
                 android:paddingLeft="10dp"
                 android:text="@{itemViewModel.value}"
-                android:textColor="@color/textColorGreen"
-                android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="1dp"
