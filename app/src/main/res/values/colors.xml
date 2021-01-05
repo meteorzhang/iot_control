@@ -15,7 +15,7 @@
 
     <color name="textColorDark">#151515</color>
     <color name="textColorPrimary">#333333</color>
-    <color name="textColorPrimaryHint">#999999</color>
+    <color name="textColorPrimaryHint">#E6E6E6</color>
     <color name="textColorLightHint">#D3D3D3</color>
     <color name="textColorLightBlue">#0091FF</color>
 
@@ -24,7 +24,7 @@
     <color name="navigationBarColor">@color/black_overlay</color>
 
     <color name="black_overlay">#66000000</color>
-    
+
     <color name="black">#000000</color>
 
     <color name="tab_normal_color">@color/textColorPrimary</color>

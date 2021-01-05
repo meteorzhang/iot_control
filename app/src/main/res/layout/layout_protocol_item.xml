@@ -30,12 +30,14 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#000000" />
+                android:background="#000000"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
+                android:maxEms="6"
                 android:padding="6dp"
                 android:text="@{itemViewModel.name}"
                 android:textColor="@{itemViewModel.isTitle() ? @color/colorPrimary : @color/black}"
@@ -44,7 +46,7 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#000000"
+                android:background="@color/textColorPrimaryHint"
                 android:visibility="@{itemViewModel.isTitle() ? view.GONE : view.VISIBLE}" />
 
             <TextView
@@ -60,13 +62,14 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#000000" />
+                android:background="#000000"
+                android:visibility="gone" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#000000" />
+            android:background="@color/textColorPrimaryHint" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

@@ -14,13 +14,15 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#000000" />
+            android:background="#000000"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
+            android:maxEms="6"
             android:padding="6dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -28,7 +30,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#000000" />
+            android:background="@color/textColorPrimaryHint" />
 
         <TextView
             android:id="@+id/state"
@@ -45,12 +47,13 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#000000" />
+            android:background="#000000"
+            android:visibility="gone" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000" />
+        android:background="@color/textColorPrimaryHint" />
 
 </LinearLayout>
