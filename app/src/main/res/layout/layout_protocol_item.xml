@@ -45,6 +45,7 @@
                 android:textSize="16sp" />
 
             <View
+                android:id="@+id/center_line"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/textColorPrimaryHint"
@@ -74,7 +75,7 @@
             android:background="@color/textColorPrimaryHint" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/recycler_details_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:recyclerView="@{itemViewModel.details}" />
