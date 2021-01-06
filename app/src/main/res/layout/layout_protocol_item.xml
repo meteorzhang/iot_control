@@ -34,14 +34,15 @@
                 android:visibility="gone" />
 
             <TextView
+                android:id="@+id/tv_protocol_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:maxEms="6"
+                android:maxEms="@{itemViewModel.isTitle() ? 100 : 7}"
                 android:padding="6dp"
                 android:text="@{itemViewModel.name}"
                 android:textColor="@{itemViewModel.isTitle() ? @color/colorPrimary : @color/black}"
-                android:textSize="@{itemViewModel.isTitle() ? 54 : 44}" />
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="1dp"
@@ -50,6 +51,7 @@
                 android:visibility="@{itemViewModel.isTitle() ? view.GONE : view.VISIBLE}" />
 
             <TextView
+                android:id="@+id/tv_protocol_content"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

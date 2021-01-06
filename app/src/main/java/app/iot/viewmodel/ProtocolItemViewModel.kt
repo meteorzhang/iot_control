@@ -1,14 +1,15 @@
 package app.iot.viewmodel
 
+import android.content.Context
+import android.util.TypedValue
 import androidx.databinding.ObservableField
-import app.iot.BR
+import app.iot.IOTApplication
 import app.iot.R
 import app.iot.common.util.LogUtils
 import app.iot.model.Protocol
 import app.iot.model.ProtocolDetail
 import app.iot.model.ProtocolDeviceType
 import app.iot.protocol.BLEConstant
-import app.iot.protocol.ProtocolUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -64,4 +65,5 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
             details.set(detailList)
         }
     }
+
 }

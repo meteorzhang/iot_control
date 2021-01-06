@@ -5,9 +5,11 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Handler
 import app.iot.*
+import app.iot.AppConstant.SYNC_DATA
 import app.iot.model.DataInfo
 import app.iot.viewmodel.SplashViewModel
 import app.iot.widget.dialog.DoubleButtonDialog
+import app.iot.widget.toast.CommonToast
 import com.google.gson.Gson
 
 /**
@@ -69,6 +71,24 @@ class SplashActivity : BaseActivity<SplashViewModel>(), SyncListener,
     }
 
     override fun onSyncFail(reason: String?) {
+        var identification = SPUtils.getData(SYNC_DATA, 0) as Int
+        // 等这个值大于3次的时候，提示获取失败
+        if (identification >= 3) {
+            CommonToast.show("获取数据失败")
+        } else {
+            if (this.isDestroyed) {
+                return
+            }
+            DoubleButtonDialog(
+                this,
+                R.drawable.ic_warning,
+                null,
+                "数据同步失败,请检查网络!",
+                "退出",
+                "重试",
+                this
+            ).show()
+        }
         if (this.isDestroyed) {
             return
         }
@@ -89,6 +109,10 @@ class SplashActivity : BaseActivity<SplashViewModel>(), SyncListener,
     }
 
     override fun onCancel(dialog: Dialog) {
+        // 在这里记录她的值
+        var identification = SPUtils.getData(SYNC_DATA, 0) as Int
+        identification++
+        SPUtils.saveData(SYNC_DATA, identification) as Int
         finish()
     }
 

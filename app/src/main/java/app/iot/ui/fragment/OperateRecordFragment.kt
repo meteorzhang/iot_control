@@ -88,65 +88,65 @@ class OperateRecordFragment(private val isDelete: Boolean) :
                     )
                 )
             }
-            mAdapter.setList(mList)
+//            mAdapter.setList(mList)
         }
         ProxyClick(mAdapter, noDataView)
     }
 
     private fun ProxyClick(mAdapter: OperationRecordAdapter, noDataView: View) {
-        mAdapter.run {
-            setOnItemClickListener { _, _, position ->
-                when (this.data[position].item.type) {
-                    OperateType.BIND.value -> {
-                        startActivity(
-                            BindActivity::class.java,
-                            AppConstant.OPERATE_RECORD,
-                            this.data[position].item
-                        )
-                    }
-                    OperateType.UNBIND.value -> {
-                        startActivity(
-                            UnbindActivity::class.java,
-                            AppConstant.OPERATE_RECORD,
-                            this.data[position].item
-                        )
-                    }
-                    OperateType.SWITCH.value -> {
-                        startActivity(
-                            SwitchActivity::class.java,
-                            AppConstant.OPERATE_RECORD,
-                            this.data[position].item
-                        )
-                    }
-                    OperateType.CHECK.value -> {
-                        startActivity(
-                            DeviceDetailActivity::class.java,
-                            AppConstant.OPERATE_RECORD, this.data[position].item
-                        )
-                    }
-                }
-            }
-            setOnItemLongClickListener { _, _, position ->
-                context?.let {
-                    DoubleButtonDialog(
-                        it,
-                        null,
-                        "提示",
-                        "确定删除此记录吗?",
-                        "取消",
-                        "确认",
-                        object : DoubleButtonDialog.DialogClickListener {
-                            override fun onClick(dialog: Dialog) {
-                                super.onClick(dialog)
-                                DaoManager.instance().delete(mAdapter.data[position].item)
-                                initView()
-                            }
-                        }
-                    ).show()
-                }
-                false
-            }
-        }
+//        mAdapter.run {
+//            setOnItemClickListener { _, _, position ->
+//                when (this.data[position].item.type) {
+//                    OperateType.BIND.value -> {
+//                        startActivity(
+//                            BindActivity::class.java,
+//                            AppConstant.OPERATE_RECORD,
+//                            this.data[position].item
+//                        )
+//                    }
+//                    OperateType.UNBIND.value -> {
+//                        startActivity(
+//                            UnbindActivity::class.java,
+//                            AppConstant.OPERATE_RECORD,
+//                            this.data[position].item
+//                        )
+//                    }
+//                    OperateType.SWITCH.value -> {
+//                        startActivity(
+//                            SwitchActivity::class.java,
+//                            AppConstant.OPERATE_RECORD,
+//                            this.data[position].item
+//                        )
+//                    }
+//                    OperateType.CHECK.value -> {
+//                        startActivity(
+//                            DeviceDetailActivity::class.java,
+//                            AppConstant.OPERATE_RECORD, this.data[position].item
+//                        )
+//                    }
+//                }
+//            }
+//            setOnItemLongClickListener { _, _, position ->
+//                context?.let {
+//                    DoubleButtonDialog(
+//                        it,
+//                        null,
+//                        "提示",
+//                        "确定删除此记录吗?",
+//                        "取消",
+//                        "确认",
+//                        object : DoubleButtonDialog.DialogClickListener {
+//                            override fun onClick(dialog: Dialog) {
+//                                super.onClick(dialog)
+//                                DaoManager.instance().delete(mAdapter.data[position].item)
+//                                initView()
+//                            }
+//                        }
+//                    ).show()
+//                }
+//                false
+//            }
+//        }
         noDataView.setOnClickListener { initView() }
     }
 

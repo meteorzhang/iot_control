@@ -18,17 +18,21 @@ object AppConstant {
 
     //数据文件
     const val DATA_JSON = "data_json"
+
     //数据版本
     const val DATA_VERSION = "data_version"
 
     //用户account
     const val ACCOUNT = "account"
 
+    //处理登陆同步服务器数据
+    const val SYNC_DATA = "SyncGetData"
+
     /**
      * intent 保存数据的Key
      */
     const val STRING = "string"
-    const val BYTES ="bytes"
+    const val BYTES = "bytes"
     const val SERIALIZABLE = "serializable"//获取序列化对象
     const val BUNDLE = "bundle"
     const val URL = "url"
