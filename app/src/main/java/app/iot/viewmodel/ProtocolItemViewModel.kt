@@ -1,13 +1,15 @@
 package app.iot.viewmodel
 
+import android.content.Context
+import android.util.TypedValue
 import androidx.databinding.ObservableField
-import app.iot.BR
+import app.iot.IOTApplication
 import app.iot.R
+import app.iot.common.util.LogUtils
 import app.iot.model.Protocol
 import app.iot.model.ProtocolDetail
 import app.iot.model.ProtocolDeviceType
 import app.iot.protocol.BLEConstant
-import app.iot.protocol.ProtocolUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,6 +17,7 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
 
     val name = ObservableField<String>()
     val value = ObservableField<String>()
+    val isTitle = ObservableField<Boolean>()
 
     val details = ObservableField<List<ProtocolDetail>>()
 
@@ -26,6 +29,11 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
         )
 
     init {
+        if (protocol.desc == "设备状态" || protocol.desc == "实况数据") {
+            isTitle.set(true)
+        } else {
+            isTitle.set(false)
+        }
         name.set(protocol.desc)
         protocol.value?.let {
             when (protocol.dataType) {//Reserved Header Data DeviceType DeviceNo UTCTime DeviceStatus CRC-8 CRC-16 DoorStatus ErrorStatus
@@ -57,4 +65,5 @@ class ProtocolItemViewModel(protocol: Protocol) : BaseViewModel() {
             details.set(detailList)
         }
     }
+
 }

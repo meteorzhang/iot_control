@@ -7,54 +7,79 @@
         <variable
             name="itemViewModel"
             type="app.iot.viewmodel.ProtocolItemViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:orientation="vertical">
 
-
         <LinearLayout
+            android:id="@+id/ll_protocol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:background="@{itemViewModel.isTitle() ? @color/textColorGreen : @color/colorPrimary}"
             android:orientation="horizontal">
 
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#000000"
+                android:visibility="gone" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_protocol_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:maxEms="@{itemViewModel.isTitle() ? 100 : 7}"
+                android:padding="6dp"
                 android:text="@{itemViewModel.name}"
-                android:textColor="@color/textColorGreen"
-                android:textSize="20sp" />
+                android:textColor="@{itemViewModel.isTitle() ? @color/colorPrimary : @color/black}"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/center_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/textColorPrimaryHint"
+                android:visibility="@{itemViewModel.isTitle() ? view.GONE : view.VISIBLE}" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_protocol_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=": "
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="6dp"
+                android:paddingLeft="10dp"
                 android:text="@{itemViewModel.value}"
-                android:textColor="@color/textColorGreen"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:recyclerView="@{itemViewModel.details}" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#000000"
+                android:visibility="gone" />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/textColorLightHint" />
+            android:layout_height="1dp"
+            android:background="@color/textColorPrimaryHint" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_details_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:recyclerView="@{itemViewModel.details}" />
+
     </LinearLayout>
 
 

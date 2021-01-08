@@ -1,6 +1,8 @@
 package app.iot.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import app.iot.common.BaseView
 import app.iot.common.util.VMUtil
 import app.iot.viewmodel.BaseViewModel
+import java.io.Serializable
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment(), BaseView {
 
@@ -52,7 +55,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), BaseView {
         return mBinding.root
     }
 
-    open fun refreshData(message:String?) {
+    open fun refreshData(message: String?) {
 
     }
 
@@ -64,4 +67,18 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), BaseView {
     }
 
     fun isInitialized(): Boolean = ::mBinding.isInitialized
+
+
+    open fun startActivity(cls: Class<*>, key: String?, value: Any?) {
+        context?.let {
+            val intent = Intent(it, cls)
+            if (value is String && !TextUtils.isEmpty(value) && !TextUtils.isEmpty(key)) {
+                intent.putExtra(key, value)
+            } else if (!TextUtils.isEmpty(key) && value != null && value is Serializable) {
+                intent.putExtra(key, value)
+            }
+            it.startActivity(intent)
+        }
+
+    }
 }
