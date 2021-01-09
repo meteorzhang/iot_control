@@ -45,6 +45,14 @@
             android:textSize="13sp"
             app:addTextChangedListener="@{viewModel.searchWatcher}" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="只能恢复7天之内的操作记录"
+            android:textColor="@color/black_overlay"
+            android:textSize="10sp"
+            android:visibility="@{viewModel.isDelete? View.VISIBLE : View.GONE}" />
 
         <FrameLayout
             android:layout_width="match_parent"

@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:singleLine="true"
-                android:textColor="@color/textColorPrimary"
+                android:textColor="@color/textColorDark"
                 app:operateType="@{itemViewModel.item.type}" />
 
             <TextView
@@ -46,14 +46,15 @@
                 android:layout_gravity="center"
                 android:singleLine="true"
                 android:text=": "
-                android:textColor="@color/textColorPrimary" />
+                android:textColor="@color/textColorDark" />
 
             <TextView
                 android:id="@+id/tv_record_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@{itemViewModel.info}" />
+                android:text="@{itemViewModel.info}"
+                android:textColor="@color/textColorDark" />
         </LinearLayout>
 
         <TextView
@@ -79,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@{itemViewModel.account}"
+                android:textColor="@color/textColorDark"
                 android:textSize="11sp" />
 
             <TextView
@@ -86,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:textColor="@color/textColorDark"
                 android:textSize="11sp"
                 app:mills="@{itemViewModel.item.time}" />
 

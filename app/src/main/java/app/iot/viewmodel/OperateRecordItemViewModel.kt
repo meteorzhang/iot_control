@@ -17,7 +17,8 @@ import app.iot.widget.toast.CommonToast
  * Created by danbo on 2019-11-07.
  */
 class OperateRecordItemViewModel(
-    private val record: OperateRecord
+    private val record: OperateRecord,
+    private val isDelete: Boolean
 ) : BaseViewModel() {
 
     val account = ObservableField<String>().apply {
@@ -81,13 +82,17 @@ class OperateRecordItemViewModel(
             context!!,
             null,
             "提示",
-            "确定删除此条记录吗?",
+            if (!isDelete) "确定删除此条记录吗?" else "确定恢复此条记录吗?",
             "取消",
             "确认",
             object : DoubleButtonDialog.DialogClickListener {
                 override fun onClick(dialog: Dialog) {
                     super.onClick(dialog)
-                    DaoManager.instance().delete(record)
+                    if (!isDelete) {
+                        DaoManager.instance().delete(record)
+                    } else {
+                        DaoManager.instance().restoreSingle(record)
+                    }
                     //刷新
                     (context as OperateRecordActivity).apply {
                         for (f in this.fragments) {

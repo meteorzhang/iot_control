@@ -1,6 +1,8 @@
 package app.iot.library.log.db;
 
 
+import android.util.Log;
+
 import java.util.List;
 
 import app.iot.library.DBManager;
@@ -35,7 +37,7 @@ public class DaoManager {
         return entity.getId() != null;
     }
 
-    public List<OperateRecord> query(String no,boolean isDelete) {
+    public List<OperateRecord> query(String no, boolean isDelete) {
         if (no == null || no.equals("")) {
             return DBManager.getInstance().getDaoSession().getOperateRecordDao().queryBuilder().where(OperateRecordDao.Properties.IsDeleted.eq(isDelete)).orderDesc(OperateRecordDao.Properties.Time).list();
 
@@ -50,6 +52,11 @@ public class DaoManager {
     }
 
 
+    /**
+     * 更新数据库
+     *
+     * @param entity
+     */
     public void update(OperateRecord entity) {
         OperateRecordDao dao = DBManager.getInstance().getDaoSession().getOperateRecordDao();
         if (dao.hasKey(entity)) {
@@ -57,25 +64,62 @@ public class DaoManager {
         }
     }
 
+    /**
+     * 清空单个-会到历史记录
+     */
     public void delete(OperateRecord entity) {
         try {
-            DBManager.getInstance().getDaoSession().delete(entity);
+            entity.setIsDeleted(true);
+            entity.setDeleteTime(System.currentTimeMillis());
+            update(entity);
         } catch (Exception e) {
         }
     }
 
+    /**
+     * 清空全部-会到历史记录
+     */
     public void deleteAll() {
-        List<OperateRecord> all = query(null,false);
-        for(OperateRecord record : all){
+        List<OperateRecord> all = query(null, false);
+        for (OperateRecord record : all) {
             record.setIsDeleted(true);
             record.setDeleteTime(System.currentTimeMillis());
             update(record);
         }
     }
 
+    /**
+     * 根据时间清空全部-会到历史记录
+     */
+    public void deleteDateAll(Long time) {
+        List<OperateRecord> all = query(null, false);
+        for (OperateRecord record : all) {
+            Log.e("eeee", "拿到的时间" + record.getTime());
+            if (time > record.getTime()) {
+                record.setIsDeleted(true);
+                record.setDeleteTime(System.currentTimeMillis());
+                update(record);
+            }
+        }
+    }
+
+    /**
+     * 恢复单个操作记录
+     *
+     * @param record
+     */
+    public void restoreSingle(OperateRecord record) {
+        record.setIsDeleted(false);
+        record.setDeleteTime(-1L);
+        update(record);
+    }
+
+    /**
+     * 恢复全部删除记录
+     */
     public void restoreAll() {
-        List<OperateRecord> all = query(null,true);
-        for(OperateRecord record : all){
+        List<OperateRecord> all = query(null, true);
+        for (OperateRecord record : all) {
             record.setIsDeleted(false);
             record.setDeleteTime(-1L);
             update(record);

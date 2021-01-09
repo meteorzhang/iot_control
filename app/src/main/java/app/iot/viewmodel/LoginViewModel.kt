@@ -43,7 +43,11 @@ class LoginViewModel : BaseViewModel(), OnTitleClickListener, SyncListener,
         value = ""
     }
     var password = MutableLiveData<String>().apply {
-        value = ""
+        if (!BuildConfig.DEBUG) {
+            value = ""
+        } else {
+            value = "appTest1019"
+        }
     }
 
     init {
@@ -95,8 +99,10 @@ class LoginViewModel : BaseViewModel(), OnTitleClickListener, SyncListener,
     }
 
     fun commit(view: View) {
-        if (!commitEnable.value!!) {
-            return
+        if (!BuildConfig.DEBUG) {
+            if (!commitEnable.value!!) {
+                return
+            }
         }
 
         login()

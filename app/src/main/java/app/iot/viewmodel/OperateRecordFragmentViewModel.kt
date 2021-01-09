@@ -38,7 +38,7 @@ class OperateRecordFragmentViewModel : BaseViewModel() {
 
         records?.let {
             for (record in it) {
-                val item = OperateRecordItemViewModel(record)
+                val item = OperateRecordItemViewModel(record, isDelete)
                 item.context = context
                 recyclerViewViewModel.item.add(item)
             }

@@ -34,7 +34,7 @@ class OperateRecordActivity : BaseActivity<OperateRecordViewModel>() {
         //删除超过7天的历史记录
         val allDeleted = DaoManager.instance().query(null, true)
         for (delete in allDeleted) {
-            if ((System.currentTimeMillis() - delete.deleteTime) > 7 * 24 * 60 * 60 * 1000){//超过七天
+            if ((System.currentTimeMillis() - delete.deleteTime) > 7 * 24 * 60 * 60 * 1000) {//超过七天
                 DaoManager.instance().delete(delete)
             }
         }
@@ -64,7 +64,7 @@ class OperateRecordActivity : BaseActivity<OperateRecordViewModel>() {
                     mViewModel?.titleViewModel?.menu?.value = if (position == 0) {
                         "清空"
                     } else {
-                        "恢复"
+                        ""
                     }
                 }
 
