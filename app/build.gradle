@@ -10,8 +10,8 @@ android {
         applicationId "iot.bt"
         minSdkVersion "$rootProject.ext.minSdkVersion"
         targetSdkVersion "$rootProject.ext.targetSdkVersion"
-        versionCode 144
-        versionName "1.4.4_alpha"
+        versionCode 145
+        versionName "1.4.5_alpha"
         multiDexEnabled true
         flavorDimensions "versionCode"
     }
