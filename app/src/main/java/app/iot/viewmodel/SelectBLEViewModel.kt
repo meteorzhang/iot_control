@@ -108,6 +108,7 @@ class SelectBLEViewModel(private val dialog: SelectBLEDialog) : BaseViewModel(),
 
         //过滤蓝牙设备
         //协议规定蓝牙广播信息不超过22字节
+
         val beacon = Beacon(device.scanRecord)
         //TODO 协议待处理
         var isIot = false
@@ -121,7 +122,6 @@ class SelectBLEViewModel(private val dialog: SelectBLEDialog) : BaseViewModel(),
         if (!isIot) {
             return
         }
-
         loadingViewModel.apply {
             if (isLoading.get()!!) {
                 isLoading.set(false)
@@ -151,7 +151,6 @@ class SelectBLEViewModel(private val dialog: SelectBLEDialog) : BaseViewModel(),
                 }
             }
         }
-
         deviceAddressList.add(device.address)
         deviceList.add(device)
         deviceList.sortByDescending { it.rssi }
@@ -159,7 +158,7 @@ class SelectBLEViewModel(private val dialog: SelectBLEDialog) : BaseViewModel(),
         //clear后排序
         recyclerViewViewModel.item.clear()
         //加载
-        for(deviceItem in deviceList){
+        for (deviceItem in deviceList) {
             val itemViewModel = SelectItemViewModel(dialog, deviceItem)
             itemViewModel.context = context
 

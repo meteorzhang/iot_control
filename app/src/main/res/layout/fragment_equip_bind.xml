@@ -87,7 +87,8 @@
                             android:foreground="@drawable/ripple_circle"
                             android:onClick="@{viewModel::selectEquipNo}"
                             android:padding="8dp"
-                            android:src="@drawable/ic_bluetooth" />
+                            android:src="@drawable/ic_bluetooth"
+                            android:visibility="invisible" />
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:layout_width="0dp"

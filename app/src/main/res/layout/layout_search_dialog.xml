@@ -64,7 +64,8 @@
                     android:foreground="@drawable/ripple_circle"
                     android:onClick="@{viewModel::bleEquipNo}"
                     android:padding="8dp"
-                    android:src="@drawable/ic_bluetooth" />
+                    android:src="@drawable/ic_bluetooth"
+                    android:visibility="invisible" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/equip_no"
@@ -156,11 +157,11 @@
                 android:background="@drawable/selector_big_btn"
                 android:gravity="center"
                 android:onClick="@{viewModel::search}"
-                android:textStyle="bold"
                 android:text="查找"
                 android:textColor="#fff"
                 android:textSize="16sp"
-                android:translationZ="2dp"/>
+                android:textStyle="bold"
+                android:translationZ="2dp" />
 
         </LinearLayout>
     </FrameLayout>

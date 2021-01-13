@@ -1,8 +1,10 @@
 package app.iot.viewmodel
 
 import app.iot.*
+import app.iot.common.util.LogUtils
 import app.iot.protocol.*
 import app.iot.ui.fragment.*
+import com.inuker.bluetooth.library.utils.ByteUtils
 
 class DeviceDetailViewModel : BaseViewModel(), OnTitleClickListener {
 

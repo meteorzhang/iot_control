@@ -31,7 +31,7 @@ public class FormatUtil {
         for (byte bt : bytes) {
             result.append(getBit(bt));
         }
-        return result.toString().substring(0, result.length() - 1);
+        return result.toString().substring(0, result.length());
     }
 
     /**

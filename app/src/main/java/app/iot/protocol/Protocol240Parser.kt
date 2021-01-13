@@ -68,11 +68,16 @@ object Protocol240Parser {
             4,
             5
         )
+        LogUtils.e("解析statusBytes--->" + statusBytes)
+
         val statusStr = FormatUtil.byteArrToBinStr(statusBytes)
+        LogUtils.e("解析statusStr--->" + statusStr)
+
         if (statusStr.isNullOrEmpty() && statusStr.length != 16) {
             CommonToast.middleShow("协议错误！")
             return null
         }
+        LogUtils.e("解析statusStr[0].toInt()--->" + (statusStr[0].toInt() - 48))
 
         //开始读字节
         //char与int的相互转化，联想ASCII码，字符‘0’对应的值为48，所以不能直接加减‘ ’

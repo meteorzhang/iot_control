@@ -9,6 +9,7 @@ import androidx.databinding.ObservableField
 import androidx.recyclerview.widget.RecyclerView
 import app.iot.R
 import app.iot.common.bindOperateType
+import app.iot.common.util.LogUtils
 import app.iot.entity.RecordData
 import app.iot.ext.initVertical
 import app.iot.model.Protocol
@@ -63,10 +64,11 @@ class OperationRecordAdapter :
             val detailList: MutableList<ProtocolDetail> = arrayListOf()
             for (detail in it) {
                 if (detail.dataType == "UsedBit") {
+                    // 设备状态 --UsedBit
                     detailList.add(detail)
                 }
+                LogUtils.e("协议--->" + detail.toString())
             }
-//            details.set(detailList)
             var detailsAdapter = ProtocolDetailsAdapter()
             detailsAdapter.setList(detailList)
             holder.getView<RecyclerView>(R.id.recycler_details_view)

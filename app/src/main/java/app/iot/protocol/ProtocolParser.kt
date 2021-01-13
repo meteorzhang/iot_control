@@ -16,7 +16,8 @@ object ProtocolParser {
             "${BLEConstant.PROTOCOL_PREFIX}${ProtocolUtil.getDeviceType(protocol)}"
         )
 
-        LogUtils.d("获取协议详情：" + protocolType.title + ":" + ByteUtils.byteToString(protocol))
+        LogUtils.e("获取协议详情：" + protocolType.title + ":" + ByteUtils.byteToString(protocol))
+        LogUtils.e("获取协议详情：$protocolType")
 
         when (protocolType) {
             ProtocolDeviceType.PF0 -> {//240
@@ -107,9 +108,9 @@ object ProtocolParser {
                     protocol.value = itemStr
                 } else {
 
-                    LogUtils.d("处理协议："+ByteUtils.byteToString(protocolBytes))
-                    LogUtils.d("读取字节："+skippedByteIndex+">"+ (skippedByteIndex + protocol.size - 1))
-                    LogUtils.d("处理0.01℃  dataType=" + protocol.dataType + " valueType=" + protocol.valueType + " value="+ itemStr+ " valueUnit=" + protocol.valueUnit +" 系数："+protocol.coefficient)
+                    LogUtils.d("处理协议：" + ByteUtils.byteToString(protocolBytes))
+                    LogUtils.d("读取字节：" + skippedByteIndex + ">" + (skippedByteIndex + protocol.size - 1))
+                    LogUtils.d("处理0.01℃  dataType=" + protocol.dataType + " valueType=" + protocol.valueType + " value=" + itemStr + " valueUnit=" + protocol.valueUnit + " 系数：" + protocol.coefficient)
 
                     when (protocol.valueType) {//处理类型值
                         "int" -> {//整型
@@ -164,17 +165,21 @@ object ProtocolParser {
                         skippedByteIndex,
                         (skippedByteIndex + protocol.size - 1)
                     )
-                val statusStr = FormatUtil.byteArrToBinStr(statusBytes)
-                var skippedBitIndex = 0
+                var statusStr = FormatUtil.byteArrToBinStr(statusBytes)
+                LogUtils.e("检测====$statusStr")
+                var skippedBitIndex = statusStr.length
+                var index = 0
+//                for (detail in protocol.detail) {
+//                    detail.size?.let {
+//                        skippedBitIndex += it
+//                    }
+//                }
                 for (detail in protocol.detail) {
                     detail.size?.let {
-                        skippedBitIndex += it
-                    }
-                }
-                for (detail in protocol.detail) {
-                    detail.size?.let {
-                        detail.status = statusStr[skippedBitIndex - 1].toInt() - 48
-                        skippedBitIndex--
+                        if (index < skippedBitIndex) {
+                            detail.status = statusStr[index].toInt() - 48
+                            index += 1
+                        }
                     }
                 }
                 //设备状态处理完毕
