@@ -48,7 +48,7 @@ class ProtocolParserFragment(private val protocol: ByteArray) :
         val protocolType = ProtocolDeviceType.valueOf(
             "${BLEConstant.PROTOCOL_PREFIX}${ProtocolUtil.getDeviceType(protocol)}"
         )
-        tv_info.text = "协议详情---> \n ${protocolType.title + ":" + ByteUtils.byteToString(protocol)}"
+        tv_info.text = " ${ByteUtils.byteToString(protocol)}"
 //        tv_info.text = "协议详情---> \n ${}"
         val singData = Protocol(
             number = 0,
