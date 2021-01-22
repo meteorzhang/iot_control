@@ -7,6 +7,7 @@ public class AppConfig {
      */
     public static final boolean LOG_ENABLE;
     public static final int LOG_LEVEL;
+    public static String BASE_URL_REPLACE = "BASE_URL_REPLACE";
 
     /**
      * 开发地址

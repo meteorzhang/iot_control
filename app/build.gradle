@@ -10,8 +10,8 @@ android {
         applicationId "iot.bt"
         minSdkVersion "$rootProject.ext.minSdkVersion"
         targetSdkVersion "$rootProject.ext.targetSdkVersion"
-        versionCode 149
-        versionName "1.4.9_alpha"
+        versionCode 150
+        versionName "1.5.0_alpha"
         multiDexEnabled true
         flavorDimensions "versionCode"
     }
@@ -81,6 +81,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+
+    compile('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
 
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit2Version"

@@ -28,6 +28,7 @@ ApiService {
     //数据文件最新版本
     @GET("dataFile/version.html")
     fun latestVersion(): Observable<BasicResponse<DataVersion>>
+
     //数据文件更新接口
     @POST("client/file/download/{version}.html")
     fun latestData(@Path("version") version: String?): Observable<String>
@@ -36,7 +37,10 @@ ApiService {
     fun bind(@Body body: RequestBody?): Observable<BasicResponse<Any>>
 
     @GET("device/bind/detail.html")
-    fun bindDetail(@Query("equipmentNo") equipmentNo: String?,@Query("deviceNo") deviceNo: String?): Observable<BasicResponse<BindDetail>>
+    fun bindDetail(
+        @Query("equipmentNo") equipmentNo: String?,
+        @Query("deviceNo") deviceNo: String?
+    ): Observable<BasicResponse<BindDetail>>
 
     @POST("device/exchange.html")
     fun exchange(@Body body: RequestBody?): Observable<BasicResponse<Any>>

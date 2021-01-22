@@ -54,7 +54,7 @@ abstract class StringObserver<T> : Observer<T> {
     }
 
     override fun onNext(response: T) {
-        LogUtils.i("------RESPONSE------", response.toString())
+        LogUtils.e("------RESPONSE------", response.toString())
 
         onSuccess(response)
 

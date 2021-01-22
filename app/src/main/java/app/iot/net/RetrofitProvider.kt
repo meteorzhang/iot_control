@@ -1,16 +1,23 @@
 package app.iot.net
 
 import android.os.Build
+import android.text.TextUtils
+import app.iot.AppConfig
 import app.iot.common.util.AppInfoUtils
+import app.iot.common.util.LogUtils
 import app.iot.common.util.Utils
 import app.iot.common.util.fitTLS.HttpsUtils
 import app.iot.common.util.fitTLS.Tls12SocketFactory
 import app.iot.net.RetrofitProvider.SingletonHolder.auth
 import app.iot.net.RetrofitProvider.SingletonHolder.client
 import app.iot.net.factory.BaseConverterFactory
+import app.iot.net.logging.LogInterceptor
 import app.iot.token
 import com.google.gson.GsonBuilder
-import okhttp3.*
+import okhttp3.Cache
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.io.File
@@ -18,9 +25,9 @@ import java.io.IOException
 import java.security.KeyManagementException
 import java.security.NoSuchAlgorithmException
 import java.util.concurrent.TimeUnit
+import java.util.logging.Logger
 import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLContext
-import kotlin.jvm.Throws
 
 
 /**
@@ -28,6 +35,7 @@ import kotlin.jvm.Throws
  */
 class RetrofitProvider {
     private var service: ApiService
+    private var isHttp: String = ""//临时
 
     private constructor() {
         var sslContext: SSLContext? = null
@@ -48,11 +56,13 @@ class RetrofitProvider {
         val cacheFile = File(Utils.getContext()?.cacheDir, "cache")
         val cache = Cache(cacheFile, 1024 * 1024 * 100) //100Mb
 
+
         val okHttpClientBuilder = OkHttpClient.Builder().cache(cache)
             .readTimeout(ApiService.DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
             .writeTimeout(ApiService.DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
             .connectTimeout(ApiService.DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
             .addInterceptor(CommonHeadInterceptor())
+            .addInterceptor(LogInterceptor())
             .retryOnConnectionFailure(true)
 
         //忽略ssl证书,android10及以上的版本就不用了
@@ -65,12 +75,22 @@ class RetrofitProvider {
         val okHttpClient = okHttpClientBuilder.build()
 
         val gson = GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").serializeNulls().create()
+        var temporary = SPUtils.getData(AppConfig.BASE_URL_REPLACE, "") as String
+        if (!TextUtils.isEmpty(temporary)) {
+            if (temporary.contains("http://")) {
+                isHttp = temporary
+            } else {
+                isHttp = "http://$temporary"
+            }
+        } else {
+            isHttp = ApiService.BASE_URL
+        }
 
         val retrofit = Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(BaseConverterFactory(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(ApiService.BASE_URL)
+            .baseUrl(isHttp)
             .build()
         service = retrofit.create(ApiService::class.java)
     }
@@ -84,10 +104,10 @@ class RetrofitProvider {
 
     companion object {
         fun getApiService(): ApiService {
-
             return SingletonHolder.INSTANCE.service
         }
     }
+
 
     internal class CommonHeadInterceptor : Interceptor {
 

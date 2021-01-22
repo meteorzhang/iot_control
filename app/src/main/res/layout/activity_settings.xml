@@ -13,7 +13,11 @@
 
     </data>
 
-    <merge tools:context=".ui.SettingsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ui.SettingsActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -33,9 +37,9 @@
             android:id="@+id/fragment"
             android:name="app.iot.ui.fragment.SettingsFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize" />
+            android:layout_height="wrap_content"/>
 
-    </merge>
+
+    </LinearLayout>
 
 </layout>

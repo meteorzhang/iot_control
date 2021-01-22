@@ -32,7 +32,7 @@ class BaseConverterFactory(private val gson: Gson) : Converter.Factory() {
 class BaseResponseBodyConverter<T>(private val gson: Gson, private val adapter: TypeAdapter<T>) : Converter<ResponseBody, T> {
     override fun convert(responseBody: ResponseBody): T? {
         val response = responseBody.string()
-        LogUtils.i("------RESPONSE------", response)
+        LogUtils.e("------RESPONSE------", response)
 
         val basicResponse = gson.fromJson(response, BasicResponse::class.java)
         if (basicResponse.data != null && basicResponse.data!!.toString().isEmpty()) {
